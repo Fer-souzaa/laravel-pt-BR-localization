@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - run: ls
-      - run: composer clearcache 
+      - run: composer clearcache
       - run: composer create-project --prefer-dist laravel/laravel blog
       - run: ls blog
       - run: cp -r src blog/Vendor/laravel-pt-BR-localization
@@ -18,4 +18,5 @@ jobs:
       - run: "[ -f blog/resources/lang/pt-BR/pagination.php ]"
       - run: "[ -f blog/resources/lang/pt-BR/passwords.php ]"
       - run: "[ -f blog/resources/lang/pt-BR/validation.php ]"
-      
+    # The resource_class feature allows configuring CPU and RAM resources for each job. Different resource classes are available for different executors. https://circleci.com/docs/2.0/configuration-reference/#resourceclass
+    resource_class: large
